@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predicting your next word</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Predicting your next word">
+  <meta name="author" content="angelina-j-maggie">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Predicting your next word</h1>
+    <h2>Using natural language processing to predict text.</h2>
+    <p>angelina-j-maggie<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction to the project</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>The aim for this analysis is to explore the three text data sets: US twitter, blog and news extracts. Using the frequencies of the words, bigrams and trigrams that feature in the data sets, I created a algorithm to predict the next word in a sentence.</h3>
+
+<ul>
+<li>Only the English words were used in the analysis and the data sets were taken from:  <a href="https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip">https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip</a> </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How I went about addressing the problem</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>First, I cleaned the data sets, removing the punctuation, and converting to lower case.</p></li>
+<li><p>Second, I took the frequencies of the unigrams, bigrams and trigrams present in the three data sets.</p>
+
+<ul>
+<li>This was not trivial, as the data sets were massive, so I split them up to process them better.</li>
+<li>Similarly, I removed all words that occurred less than 10 times, to reduce the search space of the algorithm so that it can run in real time on the app.</li>
+</ul></li>
+<li><p>The algorithm works by checking for the presence of bigrams/words at the start of trigrams or bigrams and predicts according to the words that follow them. The probabilities were determined from the frequency of the words in the corpora. If the previous words did not occur in either trigrams or bigrams, then the unigram probabilities are used to predict the word.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The product</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The app itself has a simple, easy to use interface. The sentence is added and then a predicted word is returned once <em>Submit</em> is pressed. A wordcloud is also provided, to show the possible words that could be returned by the algorithm.</p>
+
+<p><img src="getNextWord.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="600px" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Limitations in the product</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>The search space for the algorithm has been greatly reduced, in order to allow it to run in real time. However this reduces accuracy.</h3>
+
+<h3>The use of higher order ngrams may add accuracy to the algorithm. However, these were not used to ensure a fast performance of the app.</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction to the project'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='How I went about addressing the problem'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The product'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Limitations in the product'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
